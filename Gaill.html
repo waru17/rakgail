@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ffbbde);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:sans-serif;
+}
+
+/* กล่องหลัก */
+.box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:320px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+h1{color:#ffbbde;}
+p{color:#b8b4b4;font-size:16px;}
+
+/* input */
+input{
+    width:90%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    text-align:center;
+    font-size:16px;
+}
+
+/* ปุ่ม */
+button{
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:20px;
+    background:#ffbbde;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    opacity:0.85;
+}
+
+/* ===== POPUP ===== */
+.popup-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    width:280px;
+    text-align:center;
+    animation: pop 0.3s ease;
+}
+
+.popup h2{
+    color:#ffbbde;
+}
+
+/* รูปใน popup */
+.popup-img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:20px; /* ถ้าอยากกลม เปลี่ยนเป็น 50% */
+    margin-bottom:10px;
+}
+
+@keyframes pop{
+    from{transform:scale(0.7); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าใส่รหัส -->
+<div class="box" id="screen">
+    <h1>เต้น้ำแข็งหลอด</h1>
+    <p>รหัสลับ</p>
+    <input type="password" id="password" placeholder="ใส่รหัสตรงนี้">
+    <button onclick="checkPassword()">ยืนยัน</button>
+</div>
+
+<!-- Popup รหัสผิด -->
+<div class="popup-bg" id="popup">
+    <div class="popup">
+        <!-- 👇 รูป -->
+        <img src="popup.jpg" class="popup-img">
+
+        <h2>คือปึกแท้มันบ่ถืก</h2>
+        <p>ปึกคักใส่ใหม่ดุ</p>
+        <button onclick="closePopup()">โอเค</button>
+    </div>
+</div>
+
+<script>
+/* 🔑 ตั้งรหัสตรงนี้ */
+const correctPassword = "1903";
+
+function checkPassword(){
+    const pass = document.getElementById("password").value;
+
+    if(pass === correctPassword){
+        document.getElementById("screen").innerHTML = `
+            <h1>💖</h1>
+            <p>รักอ้วนสุดๆๆๆๆๆๆๆ </p>
+        `;
+    }else{
+        document.getElementById("popup").style.display = "flex";
+    }
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
